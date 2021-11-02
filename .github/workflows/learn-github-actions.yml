@@ -27,5 +27,11 @@ jobs:
           # Required: the job status, this will be used in the post section and sent
           # as status of the trace. Must always be ${{ job.status }}.
           job-status: ${{ job.status }}
-      - run: mix deps.get
+      - run: |
+        echo ::set-env name=STEP_ID::0
+        echo ::set-env name=STEP_START::$(date +%s)
+      - run: |
+        buildevents cmd $TRACE_ID $STEP_ID mix deps.get 
+      - run: |
+        buildevents step $TRACE_ID $STEP_ID $STEP_START 'dependencies'
       - run: mix test
