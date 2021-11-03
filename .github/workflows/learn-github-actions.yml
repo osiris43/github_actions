@@ -34,5 +34,6 @@ jobs:
       - run: buildevents step $TRACE_ID $STEP_ID $STEP_START 'dependencies'
       - run: |
           echo "STEP_ID=1" >> $GITHUB_ENV
+          echo "STEP_START=$(date +%s)" >> $GITHUB_ENV
       - run: buildevents cmd $TRACE_ID $STEP_ID "tests" -- mix test 
       - run: buildevents step $TRACE_ID $STEP_ID $STEP_START 'tests'
