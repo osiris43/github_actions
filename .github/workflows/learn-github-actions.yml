@@ -30,6 +30,6 @@ jobs:
       - run: |
           echo "STEP_ID=0" >> $GITHUB_ENV
           echo "STEP_START=$(date +%s)" >> $GITHUB_ENV
-        #- run: buildevents cmd $TRACE_ID $STEP_ID mix deps.get 
-      #- run: buildevents step $TRACE_ID $STEP_ID $STEP_START 'dependencies'
+      - run: buildevents cmd $TRACE_ID $STEP_ID mix deps.get 
+      - run: buildevents step $TRACE_ID $STEP_ID $STEP_START 'dependencies'
       #- run: mix test
