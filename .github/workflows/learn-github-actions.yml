@@ -28,8 +28,8 @@ jobs:
           # as status of the trace. Must always be ${{ job.status }}.
           job-status: ${{ job.status }}
       - run: |
-          echo ::set-env name=STEP_ID::0
-          echo ::set-env name=STEP_START::$(date +%s)
-      #- run: buildevents cmd $TRACE_ID $STEP_ID mix deps.get 
+          echo "STEP_ID=0" >> $GITHUB_ENV
+          echo "STEP_START=$(date +%s)" >> $GITHUB_ENV
+        #- run: buildevents cmd $TRACE_ID $STEP_ID mix deps.get 
       #- run: buildevents step $TRACE_ID $STEP_ID $STEP_START 'dependencies'
       #- run: mix test
